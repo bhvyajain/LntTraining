@@ -1,6 +1,9 @@
 console.log("First node example");
 function prime_check(x) {
   var k = x;
+  if (k == 1) {
+    return 0;
+  }
   for (i = 2; i <= x; i++) {
     if (k % i === 0) {
       return 0;
@@ -33,3 +36,4 @@ function multiplePrime() {
   return primearry;
 }
 prime_check(6);
+PrimeRangeCheck(3, 19);
