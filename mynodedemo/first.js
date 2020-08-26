@@ -1,14 +1,14 @@
 console.log("First node example");
 function prime_check(x) {
   var k = x;
-  if (k == 1) {
-    return 0;
+  if (k === 1) {
+    return true;
   }
   for (i = 2; i <= x; i++) {
     if (k % i === 0) {
-      return 0;
+      return true;
     } else {
-      return 1;
+      return false;
     }
   }
 }
@@ -17,8 +17,7 @@ function PrimeRangeCheck(x, y) {
   var m = y;
   primearry = [];
   for (i = k; i <= m; i++) {
-    var d = prime_check(i);
-    if (d === 0) {
+    if (prime_check(i)) {
       primearry.push(i);
     }
   }
@@ -28,8 +27,7 @@ function PrimeRangeCheck(x, y) {
 function multiplePrime() {
   primearry = [];
   for (i = 1; i <= arguments.length; i++) {
-    var d = prime_check(argument[i]);
-    if (d === 0) {
+    if (prime_check(argument[i])) {
       primearry.push(argument[i]);
     }
   }
