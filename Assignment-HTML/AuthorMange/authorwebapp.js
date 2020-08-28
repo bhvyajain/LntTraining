@@ -4,11 +4,11 @@ $("#authors").hide();
 function addAuthor() {
   let id = $("#id").val();
   let name = $("#name").val();
-  let coverpageurl = $("#coverpageurl").val();
-  let author = $("#author ").val();
-  let price = $("#price").val();
-  let rating = $("#rating").val();
-  let author = new Author(id, name, coverpageurl, author, price, rating);
+  let biography = $("#biography").val();
+  let birthdate = $("#birthdate").val();
+  let email = $("#email").val();
+  let bookslist = $("#bookslist").val();
+  let author = new Author(id, name, biography, birthdate, email, bookslist);
   console.log(author);
   authorManager.addAuthor(author);
   $("#fillform").trigger("reset");
@@ -29,13 +29,13 @@ function updateList() {
     cell2 = newRow.insertCell(1);
     cell2.innerHTML = author.name;
     cell3 = newRow.insertCell(2);
-    cell3.innerHTML = author.coverpageurl;
+    cell3.innerHTML = author.biography;
     cell4 = newRow.insertCell(3);
-    cell4.innerHTML = author.author;
+    cell4.innerHTML = author.birthdate;
     cell5 = newRow.insertCell(4);
-    cell5.innerHTML = author.price;
+    cell5.innerHTML = author.email;
     cell6 = newRow.insertCell(5);
-    cell6.innerHTML = author.rating;
+    cell6.innerHTML = author.bookslist;
     cell6 = newRow.insertCell(6);
     cell6.innerHTML = `<button class="btn btn-success" onClick="onEdit(this)">Edit</button>
                        <button class="btn btn-success" onClick="DeleteAuthor(this)">Delete</button>`;
@@ -53,19 +53,19 @@ function onEdit(value) {
   let t = value.parentElement.parentElement;
   document.getElementById("uid").value = t.cells[0].innerHTML;
   document.getElementById("uname").value = t.cells[1].innerHTML;
-  document.getElementById("ucoverpageurl").value = t.cells[2].innerHTML;
-  document.getElementById("uauthor ").value = t.cells[3].innerHTML;
-  document.getElementById("uprice").value = t.cells[4].innerHTML;
-  document.getElementById("urating").value = t.cells[5].innerHTML;
+  document.getElementById("ubiography").value = t.cells[2].innerHTML;
+  document.getElementById("ubirthdate").value = t.cells[3].innerHTML;
+  document.getElementById("uemail").value = t.cells[4].innerHTML;
+  document.getElementById("ubookslist").value = t.cells[5].innerHTML;
 }
 function UpdateAuthor() {
   let id = $("#uid").val();
   let name = $("#uname").val();
-  let coverpageurl = $("#ucoverpageurl").val();
-  let author = $("#uauthor ").val();
-  let price = $("#uprice").val();
-  let rating = $("u#rating").val();
-  let author = new Author(id, name, coverpageurl, author, price, rating);
+  let biography = $("#ubiography").val();
+  let birthdate = $("#ubirthdate").val();
+  let email = $("#uemail").val();
+  let bookslist = $("u#bookslist").val();
+  let author = new Author(id, name, biography, birthdate, email, bookslist);
   console.log(author);
   authorManager.UpdateAuthDetais(author);
   updateList();

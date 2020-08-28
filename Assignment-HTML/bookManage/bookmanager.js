@@ -7,18 +7,20 @@ BookManager.prototype.addbook = function (book) {
 };
 BookManager.prototype.UpdatebookDetais = function (book) {
   let temp = book;
+  let temp2 = this.books;
+  debugger;
   console.log("before  temp", temp);
-  console.log("before Updated", this.books);
-  for (let i = 0; i <= this.books.lenth; i++) console.log(i);
-  if (this.books.id === temp.id) {
-    this.books.title = temp.title;
-    this.books.coverpageurl = temp.coverpageurl;
-    this.books.author = temp.author;
-    this.books.price = price;
-    this.books.rating = rating;
-    console.log("updatedAuthDetails", this.books);
-    return this.books;
-  }
+  console.log("before Updated", this.temp2);
+  for (let val of temp2)
+    if (val.id === temp.id) {
+      val.title = temp.title;
+      val.coverpageurl = temp.coverpageurl;
+      val.author = temp.author;
+      val.price = price;
+      val.rating = rating;
+      console.log("updatedAuthDetails", this.books);
+      return this.books;
+    }
 };
 BookManager.prototype.getAll = function () {
   return this.books;

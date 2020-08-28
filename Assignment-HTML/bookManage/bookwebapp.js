@@ -69,6 +69,7 @@ function Updatebook() {
   let rating = $("u#rating").val();
   let books = new Book(id, title, coverpageurl, author, price, rating);
   console.log(books);
+
   bookManager.UpdatebookDetais(books);
   updateList();
   $("#updateform").trigger("reset");
