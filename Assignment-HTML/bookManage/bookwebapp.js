@@ -17,9 +17,9 @@ function addbook() {
 }
 
 function updateList() {
-  console.log("show list");
-  $("#authors").show();
-  let books = $("#authors");
+  //console.log("show list");
+  // $("#authors").show();
+  // let books = $("#authors");
   for (let books of bookManager.getAll()) {
     var table = document
       .getElementById("booklist")
