@@ -44,7 +44,7 @@ function updateList() {
 function DeleteAuthor(value) {
   let t = value.parentElement.parentElement;
   id = t.cells[0].innerHTML;
-  // console.log("calling id", t.cells[0].innerHTML);
+  console.log("calling id", id);
   authorManager.remove(id);
   updateList();
 }

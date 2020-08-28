@@ -19,8 +19,10 @@ BookManager.prototype.UpdatebookDetais = function (book) {
       val.price = price;
       val.rating = rating;
       console.log("updatedAuthDetails", this.books);
-      return this.books;
+      //return this.books;
     }
+  this.books = temp2;
+  return this.books;
 };
 BookManager.prototype.getAll = function () {
   return this.books;
@@ -38,6 +40,7 @@ BookManager.prototype.getById = function (id) {
 
 BookManager.prototype.remove = function (id) {
   let newList = [];
+  console.log("id:id", id);
   for (let book of this.books) {
     if (book.id !== id) newList.push(book); //push all books to new list, except the one we have to remove
   }
@@ -45,6 +48,7 @@ BookManager.prototype.remove = function (id) {
   this.books = newList;
   console.log("deleted the list");
   console.log(this.books);
+  return this.books;
 };
 
 function showbooks(books, heading = null) {
