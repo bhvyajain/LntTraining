@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link rel="stylesheet" href="./author.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Author AddPage</title>
+  </head>
+  <body>
+    <div style="background: url(https://www.freepik.com/premium-photo/multi-coloured-school-books-white-background-with-copy-space_8601286.htm)" class="page-holder bg-cover">
+     <div class="container">
+  <div class="page-header">
+    <h1>Add Author Details</h1>
+</div>
+    <div class="container">
+    <form id="fillform" class="form-group" method="GET">
+      <div class="form-group">
+      <label for="email">id:</label>
+      <input type="text" id="id" placeholder="Id" /><br />
+      </div>
+      <div class="form-group">
+      <label for="email">Name:</label>
+      <input type="text" id="name" placeholder="Author Name" /><br />
+      </div>
+      <div class="form-group">
+      <label for="email">Biography:</label>
+      <input type="text" id="biography" placeholder="Add biography" /><br />
+      </div>
+      <div class="form-group">
+      <label for="email">birthdate:</label>
+      <input type="date" id="birthdate" placeholder="Add BIRTHDATE" /><br />
+      </div>
+      <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="Author email" /><br />
+      </div>
+      <div class="form-group">
+      <label for="email">bookslist:</label>
+      <input
+        type="list of books"
+        id="bookslist"
+        placeholder="Add books name"
+      /><br />
+      </div>
+      <input type="button"  class="btn btn-success" value="Addauthor" onclick="addAuthor()" />
+    </form>
+    </div>
+    <div class="container">
+  <div class="page-header">
+    <h1>Author Details</h1>
+</div>
+</div>
+    <div class="container">
+        <table  id="authorlist" class="table table-hover list">
+          <thead>    Author Details
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>biography</th>
+              <th>birthdate</th>
+              <th>email</th>
+              <th>bookslist</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </ul>
+  
+</div>
+<div class="container">
+    <form id="updateform" class="form-group">
+      <input type="text" id="uid" placeholder="Id" /><br />
+      <input type="text" id="uname" placeholder="Author Name" /><br />
+      <input type="text" id="ubiography" placeholder="Add biography" /><br />
+      <input type="date" id="ubirthdate" placeholder="Add biography" /><br />
+      <input type="email" id="uemail" placeholder="Author email" /><br />
+      <input
+        type="list of books"
+        id="ubookslist"
+        placeholder="Add books name"
+      /><br />
+      <input type="button" class="btn btn-success" value="updated" onclick="UpdateAuthor()" />
+    </form>
+    </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="author.js"></script>
+    <script src="authormanager.js"></script>
+    <script src="authorwebapp.js"></script>
+  </body>
+</html>

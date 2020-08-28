@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link rel="stylesheet" href="./book.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Book AddPage</title>
+  </head>
+  <body>
+    <div style="background: url(https://www.freepik.com/premium-photo/multi-coloured-school-books-white-background-with-copy-space_8601286.htm)" class="page-holder bg-cover">
+     <div class="container">
+  <div class="page-header">
+    <h1>Add Book Details</h1>
+</div>
+    <div class="container">
+    <form id="fillform" class="form-group" method="GET">
+      <div class="form-group">
+      <label for="price">id:</label>
+      <input type="text" id="id" placeholder="Id" /><br />
+      </div>
+      <div class="form-group">
+      <label for="price">Title:</label>
+      <input type="text" id="title" placeholder="book Title" /><br />
+      </div>
+      <div class="form-group">
+      <label for="price">Coverpageurl:</label>
+      <input type="url" id="coverpageurl" placeholder="Add coverpageurl" /><br />
+      </div>
+      <div class="form-group">
+      <label for="price">author :</label>
+      <input type="text" id="author " placeholder="Add author " /><br />
+      </div>
+      <div class="form-group">
+      <label for="price">price:</label>
+      <input type="number" id="price" placeholder="book price" /><br />
+      </div>
+      <div class="form-group">
+      <label for="price">rating:</label>
+      <input
+        type="datetime-local"
+        id="rating"
+        placeholder="Add books name"
+      /><br />
+      </div>
+      <input type="button"  class="btn btn-success" value="Addbook" onclick="addbook()" />
+    </form>
+    </div>
+    <div class="container">
+  <div class="page-header">
+    <h1>book Details</h1>
+</div>
+</div>
+    <div class="container">
+        <table  id="booklist" class="table table-hover list">
+          <thead>    book Details
+            <tr>
+              <th>Id</th>
+              <th>Title</th>
+              <th>coverpageurl</th>
+              <th>author </th>
+              <th>price</th>
+              <th>rating</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </ul>
+  
+</div>
+<div class="container">
+    <form id="updateform" class="form-group">
+      <input type="text" id="uid" placeholder="Id" /><br />
+      <input type="text" id="utitle" placeholder="book title" /><br />
+      <input type="url" id="ucoverpageurl" placeholder="Add coverpageurl" /><br />
+      <input type="text" id="uauthor " placeholder="Add author " /><br />
+      <input type="number" id="uprice" placeholder="book price" /><br />
+      <input
+        type="text"
+        id="urating"
+        placeholder="Add books name"
+      /><br />
+      <input type="button" class="btn btn-success" value="updated" onclick="Updatebook()" />
+    </form>
+    </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="book.js"></script>
+    <script src="bookmanager.js"></script>
+    <script src="bookwebapp.js"></script>
+  </body>
+</html>
