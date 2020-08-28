@@ -3,7 +3,7 @@ let BookManager = function () {
 };
 
 BookManager.prototype.addbook = function (book) {
-  if (book && book.id && book.name) this.books.push(book);
+  if (book && book.id && book.title) this.books.push(book);
 };
 BookManager.prototype.UpdatebookDetais = function (book) {
   let temp = book;
@@ -11,7 +11,7 @@ BookManager.prototype.UpdatebookDetais = function (book) {
   console.log("before Updated", this.books);
   for (let i = 0; i <= this.books.lenth; i++) console.log(i);
   if (this.books.id === temp.id) {
-    this.books.title = temp.name;
+    this.books.title = temp.title;
     this.books.coverpageurl = temp.coverpageurl;
     this.books.author = temp.author;
     this.books.price = price;
