@@ -26,14 +26,15 @@ class BookRepository {
       });
   }
   async getAll() {
-    return await book.find().toArray();
+    return await book.find();
   }
   async Add(bookadd) {
-    bookadd = new book();
-    await book.insert(bookadd);
+    //bookadd = new book();
+    console.log("bookadd");
+    return await bookadd.save(bookadd);
   }
-  async getById(id) {
-    let bookid = await book.findOne({ id: id });
+  async getById(bid) {
+    let bookid = await book.findOne({ bid: bid });
     return bookid;
   }
   async getByBook(author) {
@@ -44,12 +45,14 @@ class BookRepository {
     let bookname = await book.findOne({ coverpageurl: { title: title } });
     return bookname;
   }
-  async update(id) {
-    let updateid = await book.updateOne({ id: id });
+  async update(list) {
+    let bid = list.bid;
+    console.log(list);
+    let updateid = await book.updateOne({ bid: bid }, list);
     return updateid;
   }
-  async remove(id) {
-    await book.deleteOne({ id: id });
+  async remove(bid) {
+    await book.deleteOne({ bid: bid });
   }
 }
 module.exports = BookRepository;

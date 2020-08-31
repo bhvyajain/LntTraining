@@ -28,29 +28,33 @@ class AuthorRepository {
       });
   }
   async getAll() {
-    return await author.find().toArray();
+    return await author.find();
   }
   async Add(authoradd) {
     console.log(authoradd);
     //authoradd = new author();
-    await author.save(authoradd);
+    return await authoradd.save(authoradd);
   }
   async getById(id) {
     let authorid = await author.findOne({ id: id });
-    s;
+
     return authorid;
   }
   async getByBook(name) {
-    let authorname = await author.findOne({ listofbooks: { name: name } });
+    let authorname = await author.findOne({
+      listofbook: { $eq: { name: name } },
+    });
     return authorname;
   }
-  B;
-  async update(id) {
-    let updateid = await author.updateOne({ id: id });
+
+  async update(updatelist) {
+    let name = updatelist.name;
+    console.log("mention list", updatelist);
+    let updateid = await author.updateOne({ name: name }, updatelist);
     return updateid;
   }
   async remove(id) {
-    await author.deleteOne({ id: id });
+    return await author.deleteOne({ id: id });
   }
 }
 module.exports = AuthorRepository;

@@ -1,15 +1,22 @@
 const book = require("../entites/book");
 const Bookrepo = require("../controller/book-repository");
-
+const mongoose = require("mongoose");
 const express = require("express");
 const routes = express.Router();
 
 let bookrepo = new Bookrepo();
 
 function addbook(req, res) {
-  var id = req.body.id;
+  var booklist = new book({
+    bid: req.body.bid,
+    title: req.body.title,
+    coverpageurl: req.body.coverpageurl,
+    author: req.body.author,
+    price: req.body.price,
+    rating: req.body.rating,
+  });
   bookrepo
-    .add(id)
+    .Add(booklist)
     .then((output) => {
       console.log(output);
       res.status(200).json({
@@ -44,9 +51,10 @@ function findAll(req, res) {
     });
 }
 function findbyId(req, res) {
-  id = req.param.id;
+  uid = req.params.uid;
+  console.log("cfdf", uid);
   bookrepo
-    .getById(id)
+    .getById(uid)
     .then((output) => {
       console.log(output);
       res.status(200).json({
@@ -63,9 +71,10 @@ function findbyId(req, res) {
     });
 }
 function findByBook(req, res) {
-  name = req.param.name;
+  author = req.params.author;
+  console.log("name", author);
   bookrepo
-    .getByBook(name)
+    .getByBook(author)
     .then((output) => {
       console.log(output);
       res.status(200).json({
@@ -82,9 +91,17 @@ function findByBook(req, res) {
     });
 }
 function updatebook(req, res) {
-  id = req.body.id;
+  console.log("bid", req.params);
+  var updatelist = new book({
+    bid: req.params.bid,
+    title: req.body.title,
+    coverpageurl: req.body.coverpageurl,
+    author: req.body.author,
+    price: req.body.price,
+    rating: req.body.rating,
+  });
   bookrepo
-    .update(id)
+    .update(updatelist)
     .then((output) => {
       console.log(output);
       res.status(200).json({
@@ -101,9 +118,9 @@ function updatebook(req, res) {
     });
 }
 function removebook(req, res) {
-  id = req.body.id;
+  bid = req.params.bid;
   bookrepo
-    .remove(id)
+    .remove(bid)
     .then((output) => {
       console.log(output);
       res.status(200).json({
@@ -119,11 +136,11 @@ function removebook(req, res) {
       });
     });
 }
-routes.get("/book", findAll);
-routes.get("/book/:id", findbyId);
-routes.get("/book/:title", findByBook);
-routes.put("/book", updatebook);
-routes.post("/book", addbook);
-routes.delete("/book:id", removebook);
+routes.get("/book/findall", findAll);
+routes.get("/book/:uid", findbyId);
+routes.get("/book/findauthor/:author", findByBook);
+routes.put("/book/update/:uid", updatebook);
+routes.post("/book/addbook", addbook);
+routes.delete("/book/removebook/:uid", removebook);
 
 module.exports = routes;

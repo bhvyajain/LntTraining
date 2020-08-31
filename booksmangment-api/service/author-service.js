@@ -1,21 +1,21 @@
 const author = require("../entites/author");
 const Authorrepo = require("../controller/author-repository");
-
+const mongoose = require("mongoose");
 const express = require("express");
 const routes = express.Router();
 
 let authorrepo = new Authorrepo();
 
 function addauthor(req, res) {
-  var authorlist= new author({
-       id=req.body.id,
-        name=req.body.name,
- biography=req.body.biography,
- birthdte=req.body.birthdte,
- email=req.body.email,
- listofbooks=req.body.listofbooks
-  })
- 
+  var authorlist = new author({
+    id: req.body.id,
+    name: req.body.name,
+    biography: req.body.biography,
+    birthdate: req.body.birthdate,
+    email: req.body.email,
+    listofbook: req.body.listofbook,
+  });
+  console.log(authorlist);
   authorrepo
     .Add(authorlist)
     .then((output) => {
@@ -52,7 +52,8 @@ function findAll(req, res) {
     });
 }
 function findbyId(req, res) {
-  id = req.param.id;
+  id = req.params.id;
+  //console.log("check", id);
   authorrepo
     .getById(id)
     .then((output) => {
@@ -71,7 +72,8 @@ function findbyId(req, res) {
     });
 }
 function findByBook(req, res) {
-  name = req.param.name;
+  name = req.params.name;
+  console.log("book", name);
   authorrepo
     .getByBook(name)
     .then((output) => {
@@ -90,9 +92,16 @@ function findByBook(req, res) {
     });
 }
 function updateauthor(req, res) {
-  id = req.body.id;
+  var updatedlist = new author({
+    //id:req.body.id,
+    name: req.params.name,
+    biography: req.body.biography,
+    birthdate: req.body.birthdate,
+    email: req.body.email,
+    listofbook: req.body.listofbook,
+  });
   authorrepo
-    .update(id)
+    .update(updatedlist)
     .then((output) => {
       console.log(output);
       res.status(200).json({
@@ -109,7 +118,8 @@ function updateauthor(req, res) {
     });
 }
 function removeauthor(req, res) {
-  id = req.body.id;
+  id = req.params.name;
+  console.log("remove author");
   authorrepo
     .remove(id)
     .then((output) => {
@@ -127,11 +137,11 @@ function removeauthor(req, res) {
       });
     });
 }
-routes.get("/author", findAll);
+routes.get("/author/findall", findAll);
 routes.get("/author/:id", findbyId);
-routes.get("/author/:name", findByBook);
-routes.put("/author", updateauthor);
-routes.post("/author", addauthor);
-routes.delete("/autho:id", removeauthor);
+routes.get("/author/findbook/:name", findByBook);
+routes.put("/author/updateauthor/:name", updateauthor);
+routes.post("/author/addauthor", addauthor);
+routes.delete("/author/removeauthor/:id", removeauthor);
 
 module.exports = routes;
