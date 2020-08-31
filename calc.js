@@ -11,6 +11,6 @@ function sum() {
   console.log(sum);
 }
 function avg() {
-  var avg = calc.m;
+  var avg = calc.Math.sum(calc);
 }
 function min() {}
