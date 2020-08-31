@@ -1,21 +1,16 @@
 calc = [];
 
 function add() {
-    var num = $("number").val;
-    calc.push(num)
+  var num = $("number").val;
+  calc.push(num);
+  console.log(calc);
 }
 
-
-
-function sum()
-{
-
+function sum() {
+  var sum = calc.reduce((a, b) => a + b);
+  console.log(sum);
 }
-function avg()
-{
-    
+function avg() {
+  var avg = calc.m;
 }
-function min()
-{
-    
-}
+function min() {}
