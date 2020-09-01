@@ -38,16 +38,19 @@ class BookRepository {
     return bookid;
   }
   async getByBook(author) {
-    let bookname = await book.finds({ author: author }, { title: 1 });
+    console.log("bookname", author);
+    let bookname = await book.find({ author: author }, { title: 1 });
+
     return bookname;
   }
   async getByPhoto(photourl) {
-    let bookname = await book.find({ coverpageurl: { title: title } });
+    let bookname = await book.find({ title: title }, { coverpageurl: 1 });
     return bookname;
   }
   async update(list) {
     let bid = list.bid;
-    console.log(list);
+    console.log(bid);
+    console.log("list", list);
     let updateid = await book.updateOne({ bid: bid }, list);
     return updateid;
   }

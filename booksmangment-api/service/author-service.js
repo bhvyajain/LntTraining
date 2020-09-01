@@ -92,14 +92,15 @@ function findByBook(req, res) {
     });
 }
 function updateauthor(req, res) {
-  var updatedlist = new author({
-    //id:req.body.id,
-    name: req.params.name,
+  //console.log("req", req);
+  var updatedlist = {
+    id: req.params.id,
+    name: req.body.name,
     biography: req.body.biography,
     birthdate: req.body.birthdate,
     email: req.body.email,
     listofbook: req.body.listofbook,
-  });
+  };
   authorrepo
     .update(updatedlist)
     .then((output) => {
@@ -140,7 +141,7 @@ function removeauthor(req, res) {
 routes.get("/author/findall", findAll);
 routes.get("/author/:id", findbyId);
 routes.get("/author/findbook/:name", findByBook);
-routes.put("/author/updateauthor/:name", updateauthor);
+routes.put("/author/updateauthor/:id", updateauthor);
 routes.post("/author/addauthor", addauthor);
 routes.delete("/author/removeauthor/:id", removeauthor);
 

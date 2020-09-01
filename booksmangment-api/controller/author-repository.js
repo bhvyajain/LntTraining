@@ -41,16 +41,20 @@ class AuthorRepository {
     return authorid;
   }
   async getByBook(name) {
-    let authorname = await author.findOne({
-      listofbook: { $eq: { name: name } },
-    });
+    let authorname = await author.findOne(
+      { name: name },
+      {
+        listofbook: 1,
+      }
+    );
     return authorname;
   }
+  s;
 
-  async update(updatelist) {
-    let name = updatelist.name;
-    console.log("mention list", updatelist);
-    let updateid = await author.updateOne({ name: name }, updatelist);
+  async update(list) {
+    let id = list.id;
+    console.log("mention list", list);
+    let updateid = await author.updateOne({ id: id }, list);
     return updateid;
   }
   async remove(id) {

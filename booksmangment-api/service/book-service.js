@@ -51,10 +51,10 @@ function findAll(req, res) {
     });
 }
 function findbyId(req, res) {
-  uid = req.params.uid;
-  console.log("cfdf", uid);
+  bid = req.params.bid;
+  console.log("cfdf", bid);
   bookrepo
-    .getById(uid)
+    .getById(bid)
     .then((output) => {
       console.log(output);
       res.status(200).json({
@@ -91,15 +91,16 @@ function findByBook(req, res) {
     });
 }
 function updatebook(req, res) {
-  console.log("bid", req.params);
-  var updatelist = new book({
+  console.log("bid", req.params.bid);
+  let bid = req.params.bid;
+  var updatelist = {
     bid: req.params.bid,
     title: req.body.title,
     coverpageurl: req.body.coverpageurl,
     author: req.body.author,
     price: req.body.price,
     rating: req.body.rating,
-  });
+  };
   bookrepo
     .update(updatelist)
     .then((output) => {
@@ -137,10 +138,10 @@ function removebook(req, res) {
     });
 }
 routes.get("/book/findall", findAll);
-routes.get("/book/:uid", findbyId);
+routes.get("/book/:bid", findbyId);
 routes.get("/book/findauthor/:author", findByBook);
-routes.put("/book/update/:uid", updatebook);
+routes.put("/book/update/:bid", updatebook);
 routes.post("/book/addbook", addbook);
-routes.delete("/book/removebook/:uid", removebook);
+routes.delete("/book/removebook/:bid", removebook);
 
 module.exports = routes;
