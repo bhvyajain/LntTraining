@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { BooksWebHeaderComponent } from './books-web-header/books-web-header.component';
 import { BooksWebFooterComponent } from './books-web-footer/books-web-footer.component';
 import { BooksWebComponent } from './books-web/books-web.component';
+import { StarratingComponent } from './starrating.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BooksWebHeaderComponent,
     BooksWebFooterComponent,
-    BooksWebComponent
+    BooksWebComponent,
+    StarratingComponent
   ],
   imports: [
     BrowserModule,
