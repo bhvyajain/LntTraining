@@ -3,10 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BooksWebHeaderComponent } from './books-web-header/books-web-header.component';
+import { BooksWebFooterComponent } from './books-web-footer/books-web-footer.component';
+import { BooksWebComponent } from './books-web/books-web.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BooksWebHeaderComponent,
+    BooksWebFooterComponent,
+    BooksWebComponent
   ],
   imports: [
     BrowserModule,

@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "booksms"
+    }
+  },
+  "defaultProject": "booksms",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -38,11 +38,11 @@ class BookRepository {
     return bookid;
   }
   async getByBook(author) {
-    let bookname = await book.findOne({ title: { author: author } });
+    let bookname = await book.finds({ author: author }, { title: 1 });
     return bookname;
   }
   async getByPhoto(photourl) {
-    let bookname = await book.findOne({ coverpageurl: { title: title } });
+    let bookname = await book.find({ coverpageurl: { title: title } });
     return bookname;
   }
   async update(list) {
