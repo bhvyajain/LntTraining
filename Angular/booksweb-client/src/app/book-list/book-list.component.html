@@ -42,6 +42,7 @@ Covers
       <td>{{ book.releaseDate | date: "MMMM yyyy" | uppercase }}</td>
       <td>
         <ca-rating value="{{ book.rating | starread }}"></ca-rating>
+        <p>{{ book.rating | starread }}</p>
       </td>
     </tr>
   </tbody>

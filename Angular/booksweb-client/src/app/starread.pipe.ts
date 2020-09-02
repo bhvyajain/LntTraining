@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class StarreadPipe implements PipeTransform {
   transform(rates: any): unknown {
     console.log('rate:', rates);
-    const value = Math.floor(rates);
+    const value = Math.round(rates);
     if (value === 10) {
       return 'Its must read book';
     } else if (value === 9) {
