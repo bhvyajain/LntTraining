@@ -8,11 +8,18 @@ Covers
     <tr>
       <th *ngIf="showImages">
         Poster
-        <ca-range></ca-range>
+        <ca-range
+          [min]="75"
+          [max]="200"
+          [delta]="15"
+          [(value)]="imageWidth"
+          (changed)="onImageWidthInfoChanged($event)"
+        ></ca-range>
       </th>
       <th>Title</th>
       <th>Author</th>
       <th>Price</th>
+      <th>Release Date</th>
       <th>Rating</th>
     </tr>
   </thead>
@@ -21,14 +28,21 @@ Covers
       <td *ngIf="showImages">
         <img
           [hidden]="!showImages"
-          [src]="book.cover"
+          [src]="
+            book.cover
+              | altvalue: book.bookId:'.jpg'
+              | prefix: '/assets/images/books/'
+          "
           [style.width.px]="imageWidth"
         />
       </td>
-      <td>{{ book.title }}</td>
-      <td>{{ book.author }}</td>
-      <td>{{ book.price }}</td>
-      <td>{{ book.rating }}<app-starrating></app-starrating></td>
+      <td>{{ book.title | uppercase }}</td>
+      <td>{{ book.author | lowercase }}</td>
+      <td>{{ book.price | currency: "INR" }}</td>
+      <td>{{ book.releaseDate | date: "MMMM yyyy" | uppercase }}</td>
+      <td>
+        <ca-rating value="{{ book.rating | starread }}"></ca-rating>
+      </td>
     </tr>
   </tbody>
 </table>

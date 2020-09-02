@@ -9,7 +9,8 @@ export interface Book {
     bookId:string;
     price:number;
     rating:number;
-    cover:string;
+    releaseDate?: string|Date
+    cover?:string;
     tags?:string;
     
   }

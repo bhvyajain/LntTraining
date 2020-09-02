@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'ca-range',
@@ -26,7 +26,7 @@ import { Component, OnInit } from '@angular/core';
     div{
       min-width:100px;
       width:100px;
-      max-width:100px;
+      max-width:150px;
     }
     button{
       border:0px;
@@ -37,14 +37,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CaRangeComponent implements OnInit {
 
-  public value=5;
-  public min=0;
-  public max=10;
-  public delta=1;
+  //Here we receive input from parent in the child. Typically using attribute assignment
+  
+  
+  
+  @Input() public min:number=0;
+  @Input() public max=100;
+  @Input() public delta=1;
+
+  @Input() public value=5;
+  
+  //Here the child send information to parent using EventEmitter
+
+  @Output() public valueChange=new EventEmitter<number>(); //note the name matches @Input() value
+
+  @Output() public changed= new EventEmitter<RangeInfo>(); //i will send the range info to the client
+  @Output() public hit=new EventEmitter<string>();  //it is fired when you hit lower boundry
+  
+
+  change(newValue){
+    if(newValue<=this.min){
+      this.hit.emit('lower');
+      newValue=this.min;
+
+    }
+    if(newValue>=this.max){
+      this.hit.emit('upper');
+      newValue=this.max;
+    }
+    //this will send an update to the parent
+
+    //provides you a detailed change information
+    this.changed.emit(new RangeInfo(this.value,newValue, newValue-this.value));
+
+    //this one provides exactly what you need to know
+    this.valueChange.emit(newValue);
+    this.value=newValue;
+
+  }
 
   constructor() { }
 
   ngOnInit(): void {
+    this.change(this.value);
+    console.log('typeof(this.min)',typeof(this.min));
+    console.log('typeof(this.max)',typeof(this.max));
+    
+    
+    console.log('range:this.value',this.value);
+    
   }
 
   decrease(){
@@ -53,13 +94,18 @@ export class CaRangeComponent implements OnInit {
   increase(){
     this.change(this.value+this.delta);
   }
-  change(newValue){
-    if(newValue<this.min)
-      newValue=this.min;
-    if(newValue>this.max)
-      newValue=this.max;
+ 
 
-    this.value=newValue;
+}
+
+export class RangeInfo{
+  public oldValue;
+  public newValue;
+  public delta;
+  constructor(oldValue, newValue, delta){
+    this.oldValue=oldValue;
+    this.newValue=newValue;
+    this.delta=delta;
   }
 
 }
