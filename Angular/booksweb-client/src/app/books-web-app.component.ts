@@ -7,7 +7,10 @@ import { Component } from "@angular/core";
     `
     <app-booksweb-header></app-booksweb-header>
     <div class='content container' >
-        <app-book-list></app-book-list>
+
+        <router-outlet></router-outlet>
+        
+        
     </div>
     <app-booksweb-footer></app-booksweb-footer>
     `

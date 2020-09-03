@@ -6,7 +6,7 @@ var app = express();
 const bookservice = require("./service/book-service");
 const authorervice = require("./service/author-service");
 app.use(bodyParser.json());
-port = process.env.Port || 8030;
+port = process.env.PORT;
 //this is to allow cross platform origin
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use((req, res, next) => {

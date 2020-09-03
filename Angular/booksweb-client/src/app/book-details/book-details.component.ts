@@ -1,15 +1,24 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Book } from '../service/book';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-book-info',
-  templateUrl: './book-info.component.html',
-  styleUrls: ['./book-info.component.css'],
+  templateUrl: './book-details.component.html',
+  styleUrls: ['./book-details.component.css'],
 })
-export class BookInfoComponent implements OnInit {
-  @Input() public book: Book;
-  books: Book[];
-  constructor() {
+export class BookDetailsComponent implements OnInit {
+  private books: Book[];
+  public selectedBook: Book;
+  public bookid: any;
+  constructor(private activatedRoute: ActivatedRoute) {
+    console.log('this.activatedRoute', this.activatedRoute);
+    console.log('route', this.activatedRoute.snapshot.params.bookId);
+
+    //  console.log('this.activatedRoute.params.bookId',this.activatedRoute.params._value.bookId);
+  }
+
+  ngOnInit(): void {
+    this.bookid = this.activatedRoute.snapshot.params.bookId;
     this.books = [
       {
         title: 'The Accursed God',
@@ -60,13 +69,7 @@ export class BookInfoComponent implements OnInit {
         tags: 'classic, poetry, mahabharata, karna, hindi',
       },
     ];
-  }
 
-  ngOnInit(): void {
-    this.bookdispaly(10588193);
-  }
-  // tslint:disable-next-line: typedef
-  bookdispaly(bookid) {
-    this.book = this.books.find((o) => o.bookId === bookid);
+    this.selectedBook = this.books[0];
   }
 }

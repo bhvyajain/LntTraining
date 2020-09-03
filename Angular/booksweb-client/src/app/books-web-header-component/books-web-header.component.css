@@ -13,3 +13,7 @@ p{
     border-bottom: 1px solid gray;
     padding-bottom:0px;
 }
+
+.navbar-nav a:hover{
+    color:yellow;
+}

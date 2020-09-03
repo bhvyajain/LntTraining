@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
     selector: 'app-booksweb-header',  //custom html element or component identifier
@@ -13,7 +13,8 @@ export class BooksWebHeaderComponent{
     //the data can come from anywhere like
     //database, ajax, calculated etc
     //so it is a dynamic data
-    public title='Word Wide Books';
+    @Input()public title='Word Wide Books';
+    
     public subTitle='Where book lovers come...';
     public time='';
 

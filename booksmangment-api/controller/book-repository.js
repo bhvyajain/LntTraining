@@ -57,5 +57,9 @@ class BookRepository {
   async remove(bid) {
     await book.deleteOne({ bid: bid });
   }
+  async getBySomething(dnk) {
+    let dnk2 = await book.find({ $exist: dnk });
+    return dnk2;
+  }
 }
 module.exports = BookRepository;

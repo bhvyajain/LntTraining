@@ -52,7 +52,7 @@ function findAll(req, res) {
 }
 function findbyId(req, res) {
   bid = req.params.bid;
-  console.log("cfdf", bid);
+  //console.log("cfdf", bid);
   bookrepo
     .getById(bid)
     .then((output) => {
@@ -137,9 +137,30 @@ function removebook(req, res) {
       });
     });
 }
+function findBySomething(req, res) {
+  dnk = req.params.dnk;
+  console.log("name", dnk);
+  bookrepo
+    .getBySomething(dnk)
+    .then((output) => {
+      console.log(output);
+      res.status(200).json({
+        message: "the data from the database ",
+        result: output,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(404).json({
+        message: "Error.....!",
+        error: err,
+      });
+    });
+}
 routes.get("/book/findall", findAll);
 routes.get("/book/:bid", findbyId);
 routes.get("/book/findauthor/:author", findByBook);
+routes.get("/book/find/:dnk", findBySomething);
 routes.put("/book/update/:bid", updatebook);
 routes.post("/book/addbook", addbook);
 routes.delete("/book/removebook/:bid", removebook);
